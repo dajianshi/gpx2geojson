@@ -24,7 +24,7 @@ fetch(url)
 	.then((response) => response.text())
 	.then((gpxtext) => {
 		let res = new DOMParser().parseFromString(gpxtext, "text/xml")
-		console.log(toGeoJSON.gpx(res))
+		console.log(gpx2GeoJSON.gpx(res))
 	});
 
 ```
