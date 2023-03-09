@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1 ,user-scalable=no">
+		<title> GPX2GeoJSON</title>
+		<script src="gpx2geojson.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div>
+			<input style="margin-top: 16px" type="button" id="button1" value="demo1" />
+			<input style="margin-top: 16px" type="button" id="button2" value="demo2" />
+		</div>		
+		<h2>demo1 geojson</h2>
+		<div id="info1"></div>
+		<hr>
+		<h2>demo2 geojson</h2>		
+		<div id="info2"></div>
+
+		<script type="text/javascript">
+
+			document.getElementById("button1").onclick = function() {
+                      loadGPX('data/data1.gpx','info1')
+			}
+
+			document.getElementById("button2").onclick = function() {
+                      loadGPX('data/data2.gpx','info2')
+			}
+			
+			function loadGPX(url,id){
+				var xmlhttp;
+				if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else { // code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.open("GET", url, true);
+				
+				xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {				
+						let res = new DOMParser().parseFromString(xmlhttp.responseText, "text/xml")
+						console.log(gpx2GeoJSON.gpx(res))
+						document.getElementById(id).innerHTML = JSON.stringify(gpx2GeoJSON.gpx(res))				
+					}
+				}
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}
+
+		</script>
+	</body>
+</html>

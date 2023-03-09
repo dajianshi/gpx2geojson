@@ -1,0 +1,26 @@
+{
+  "name": "gpx2geojson",
+  "version": "1.0.0",
+  "description": "Convert GPX to GeoJSON,applicable to various gpx data.",
+  "main": "gpx2geojson.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dajianshi/gpx2geojson.git"
+  },
+  "keywords": [
+    "GPX",
+    "GeoJSON",
+    "GPX",
+    "to",
+    "GeoJSON"
+  ],
+  "author": "dajianshi",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/dajianshi/gpx2geojson/issues"
+  },
+  "homepage": "http://openlayers-cesium.com/demos/demo.html"
+}
